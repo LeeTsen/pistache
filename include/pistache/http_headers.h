@@ -11,6 +11,7 @@
 #include <memory>
 #include <unordered_map>
 #include <vector>
+#include <cstring>
 
 #include <pistache/http_header.h>
 #include <pistache/type_checkers.h>
@@ -32,10 +33,7 @@ bool LowercaseEqualStatic(const std::string &dynamic,
 
 struct LowercaseEqual {
   bool operator()(const std::string &left, const std::string &right) const {
-    return std::equal(left.begin(), left.end(), right.begin(), right.end(),
-                      [](const char &a, const char &b) {
-                        return std::tolower(a) == std::tolower(b);
-                      });
+    return strcasecmp(left.c_str(), right.c_str()) == 0;
   };
 };
 

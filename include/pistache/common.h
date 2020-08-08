@@ -44,8 +44,7 @@
       throw std::runtime_error(oss.str());                                     \
     }                                                                          \
     return ret;                                                                \
-  }();                                                                         \
-  (void)0
+  }()
 
 struct PrintException {
   void operator()(std::exception_ptr exc) const {

@@ -286,7 +286,7 @@ TEST(headers_test, authorization_basic_test) {
   // Verify what went in is what came out...
   au.write(oss);
   ASSERT_TRUE(BasicEncodedValue == oss.str());
-  oss = std::ostringstream();
+  oss.str("");
 
   // Verify authorization header recognizes it is basic method and no other...
   ASSERT_TRUE(
@@ -300,7 +300,7 @@ TEST(headers_test, authorization_basic_test) {
   // Verify it encoded correctly...
   au.write(oss);
   ASSERT_TRUE(BasicEncodedValue == oss.str());
-  oss = std::ostringstream();
+  oss.str("");
 
   // Verify it decoded correctly...
   ASSERT_TRUE(au.getBasicUser() == "Aladdin");
